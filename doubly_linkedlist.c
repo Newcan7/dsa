@@ -7,35 +7,6 @@ struct list *next, *prev;
 } NODE;
 NODE* head =NULL;
 NODE* create(int k);
-int main() 
-{
-    int ch, value;
-    while (1) 
-	{
-        printf("1. Insert at First\n");
-        printf("2. Insert at Last\n");
-        printf("3. Display\n");
-        printf("Enter your choice: ");
-        scanf("%d", &ch);
-        switch (ch) {
-            case 1:
-                printf("Enter value to insert at first: ");
-                scanf("%d", &value);
-                insertFirst(value);
-                break;
-            case 2:
-                printf("Enter value to insert at last: ");
-                scanf("%d", &value);
-                insertLast(value);
-                break;
-            case 3:
-                printf("Linked List: ");
-                display();
-                break;
-        }
-    }
-    return 0;
-}
 NODE* create(int k)
 {
 	NODE* p =(NODE*)malloc(sizeof(NODE));
@@ -73,7 +44,35 @@ void display()
 	}
 		printf("\n");
 }
-
+int main() 
+{
+    int ch, value;
+    while (1) 
+	{
+        printf("1. Insert at First\n");
+        printf("2. Insert at Last\n");
+        printf("3. Display\n");
+        printf("Enter your choice: ");
+        scanf("%d", &ch);
+        switch (ch) {
+            case 1:
+                printf("Enter value to insert at first: ");
+                scanf("%d", &value);
+                insertFirst(value);
+                break;
+            case 2:
+                printf("Enter value to insert at last: ");
+                scanf("%d", &value);
+                insertLast(value);
+                break;
+            case 3:
+                printf("Linked List: ");
+                display();
+                break;
+        }
+    }
+    return 0;
+}
 
 
 
