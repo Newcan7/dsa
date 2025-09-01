@@ -34,6 +34,18 @@ void insertFirst(int k)
 	head->prev=p;
 	head=p;
 }
+void insertPos(int k,int pos)
+{
+	NODE*p= create(k), *q=head;
+	int i;
+	for(i=1;pos-i;i++)
+	{
+		q=q->next;
+	}
+	p->next=q->next;
+	p->prev=q;
+	q->next=p;
+}
 void display()
 {
 	NODE*p=head;
@@ -46,12 +58,13 @@ void display()
 }
 int main() 
 {
-    int ch, value;
+    int ch, value,pos;
     while (1) 
 	{
-        printf("1. Insert at First\n");
-        printf("2. Insert at Last\n");
-        printf("3. Display\n");
+        printf("1. Insert at First \n");
+        printf("2. Insert at Last \n");
+		printf("3. Insert at Pos \n");
+        printf("4. Display\n");
         printf("Enter your choice: ");
         scanf("%d", &ch);
         switch (ch) {
@@ -65,9 +78,16 @@ int main()
                 scanf("%d", &value);
                 insertLast(value);
                 break;
-            case 3:
+            case 4:
                 printf("Linked List: ");
                 display();
+                break;
+			case3:
+                printf("Enter value to insert: ");
+                scanf("%d", &value);
+                printf("Enter position to insert : ");
+                scanf("%d", &pos);
+                insertPos(value, pos);
                 break;
         }
     }
