@@ -30,8 +30,8 @@ void insertLast(int k)
 void insertFirst(int k)
 {
 	NODE* p=create(k);
-	p->next=head;
 	head->prev=p;
+	p->next=head;
 	head=p;
 }
 void insertPos(int k,int pos)
@@ -42,9 +42,10 @@ void insertPos(int k,int pos)
 	{
 		q=q->next;
 	}
-	p->next=q->next;
-	p->prev=q;
-	q->next=p;
+	p->next = q->next;
+    p->prev = q;
+    q->next->prev = p;
+    q->next = p;
 }
 void display()
 {
@@ -78,16 +79,16 @@ int main()
                 scanf("%d", &value);
                 insertLast(value);
                 break;
-            case 4:
-                printf("Linked List: ");
-                display();
-                break;
-			case3:
+			case 3:
                 printf("Enter value to insert: ");
                 scanf("%d", &value);
                 printf("Enter position to insert : ");
                 scanf("%d", &pos);
                 insertPos(value, pos);
+                break;
+            case 4:
+                printf("Linked List: ");
+                display();
                 break;
         }
     }
