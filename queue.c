@@ -1,16 +1,18 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define MAX 5
-int rear =-1,front=0;
+#define SIZE 5
+int rear =-1;
 void insert(int a[],int x);
 int delete(int a[]);
+void Display(int a[]);
 int main()
 {
-	int a[MAX],n,m,ch;
+	int a[SIZE],n,m,ch;
 	while(1)
 	{
 		printf("1: Insert \n");
 		printf("2: Delete \n");
+		printf("3: Display \n");
 		printf("Enter choice : \n");
 		scanf("%d",&ch);
 		switch(ch)
@@ -22,6 +24,8 @@ int main()
 			case 2: m = delete(a);
 			        printf("deleted element is : %d \n",m);	
 					break;
+			case 3: Display(a);
+					break;
 			default : exit(1);			
 		}
 	}
@@ -29,20 +33,35 @@ int main()
 }
 void insert(int a[],int x)
 {
-	++rear;
-	if(rear==MAX)
+	if(rear==SIZE-1)
 	{
 		printf("Queue Full \n");
 		exit(1);
 	}
-	a[rear]=x;
+	a[++rear]=x;
 }
 int delete(int a[])
 {
-	if(front>rear)
+	int i,e;
+	if(rear==-1)
 	{
 		printf("Queue Empty \n");
 		exit(1);
 	}
-	return a[front++];
+	e=a[0];
+	for(i=0;i<rear;i++)
+	{
+		a[i]=a[i+1];
+	}
+	--rear;
+	return e;
+	
+}
+void Display(int a[])
+{
+	int i;
+	for(i=0;i<=rear;i++)
+	{
+		printf("%d <-- ",a[i]);
+	}
 }
