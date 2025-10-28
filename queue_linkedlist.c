@@ -5,9 +5,55 @@ typedef struct list
     int key;
     struct list* next;
 } NODE;
-NODE* front = NULL;
-NODE* rear = NULL;
+NODE* head = NULL;
 NODE* create(int k);
+NODE* create(int k) 
+{
+    NODE* x = (NODE*)malloc(sizeof(NODE));
+    x->key = k;
+    x->next = NULL;
+    return x;
+}
+void insert(int k) 
+{
+    NODE* p = create(k);
+    if (!head) 
+	{
+        head=p;
+    } 
+    else 
+    {
+        p->next=head;
+        head=p;
+    }
+}
+int delete() 
+{
+    if (!head) 
+	{
+        printf("Queue Empty\n");
+        exit(1);
+    }
+    int r;
+    NODE* p = head;
+    while(p->next->next)
+        p=p->next;
+    r=p->next->key;
+    p->next=NULL;
+    free(p->next);
+    return r;
+}
+void display() 
+{
+    NODE* p = head;
+    while (p) 
+	{
+        printf("%d --> ", p->key);
+        p = p->next;
+    }
+    printf("\n");
+}
+
 int main()
 {
     int ch, val;
@@ -35,46 +81,3 @@ int main()
     }
     return 0;
 }
-NODE* create(int k) 
-{
-    NODE* x = (NODE*)malloc(sizeof(NODE));
-    x->key = k;
-    x->next = NULL;
-    return x;
-}
-void insert(int k) 
-{
-    NODE* p = create(k);
-    if (!front) 
-	{
-        front = rear = p;
-    } else {
-        rear->next = p;
-        rear = p;
-    }
-}
-int delete() 
-{
-    if (!front) 
-	{
-        printf("Queue Empty\n");
-        exit(1);
-    }
-    NODE* p = front;
-    int r = p->key;
-    front = front->next;
-    if (!front) rear = NULL;
-    free(p);
-    return r;
-}
-void display() 
-{
-    NODE* p = front;
-    while (p) 
-	{
-        printf("%d --> ", p->key);
-        p = p->next;
-    }
-    printf("\n");
-}
-

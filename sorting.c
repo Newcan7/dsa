@@ -34,14 +34,18 @@ int main()
 }
 void bubble_sort(int a[])
 {
-	int i,j,temp;
-	for(i=0;i<SIZE-1;i++)
-	for(j=0;j<SIZE-1-i;j++)
-	if(a[j]>a[j+1])
+	int i,j,temp,flag;
+	for(i=0;i<SIZE-1 && flag==1;i++)
 	{
-	temp=a[j];
-	a[j]=a[j+1];
-	a[j+1]=temp;	
+		flag=0;
+		for(j=0;j<SIZE-i-1;j++)
+			if(a[j]>a[j+1])
+				{
+					temp=a[j];
+					a[j]=a[j+1];
+					a[j+1]=temp;	
+					flag=1;
+				}
 	}
 	printf("BUBBLE Sorted Array is : \n");
 	for(i=0;i<SIZE;i++)
@@ -52,14 +56,14 @@ void bubble_sort(int a[])
 void selection_sort(int a[])
 {
 	int i,j,temp;
-	for (i=0;i<SIZE;i++)
-	for(j=i+1;j<SIZE;j+1)
+	for (i=0;i<SIZE-1;i++)
+	for(j=i+1;j<SIZE;j++)
 	if(a[i]>a[j])
 	{
-	temp=a[i];
-	a[i]=a[j];
-	a[j]=temp;
-}
+		temp=a[i];
+		a[i]=a[j];
+		a[j]=temp;
+	}
 	printf("SELECTION Sorted Array is : \n");
 	for(i=0;i<SIZE;i++)
 	{
