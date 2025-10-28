@@ -58,8 +58,16 @@ NODE* create(int k)
 void push(int x) 
 {
     NODE* p = create(x);
-    p->next = head;
-    head = p;
+    if(head==NULL)
+    {
+        p->next=NULL;
+        head=p;
+    }
+    else
+    {
+        p->next = head;
+        head = p;
+    }
 }
 int pop() 
 {
@@ -76,7 +84,8 @@ int pop()
 }
 int peek() 
 {
-    if (head == NULL) {
+    if (head == NULL) 
+    {
         printf("Stack is empty !! \n");
         exit(1);
     }

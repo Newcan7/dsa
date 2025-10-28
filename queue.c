@@ -64,4 +64,5 @@ void Display(int a[])
 	{
 		printf("%d <-- ",a[i]);
 	}
+	printf("/n",);
 }
