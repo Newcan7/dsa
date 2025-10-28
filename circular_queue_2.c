@@ -37,12 +37,11 @@ void insert(int a[], int x)
         printf("Queue Full\n");
         return;
     }
-
     if (front == -1)
         front = 0;
     rear = (rear + 1) % MAX;
     a[rear] = x;
-    printf("%d inserted\n", x);
+    printf("%d inserted \n", x);
 }
 int delete(int a[])
 {
