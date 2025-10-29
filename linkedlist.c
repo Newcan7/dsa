@@ -14,6 +14,19 @@ NODE* create(int k)
 	x->next=NULL;
 	return x;
 }
+
+void reverse()
+{
+	NODE *prev=NULL, *next=NULL, *curr=head;
+	while(curr)
+	{
+		next=curr->next;
+		curr->next=prev;
+		prev=curr;
+		curr=next;
+	}
+	head=prev;
+}
 void insertLast(int k)
 {
 	NODE *p= create(k), *q=head;
@@ -109,7 +122,8 @@ int main() {
         printf("4. Delete First\n");
         printf("5. Delete Last \n");
         printf("6. Delete at Pos\n");
-        printf("7. Display\n");
+		printf("7. Reverse List.\n");
+        printf("8. Display\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch (choice) {
@@ -141,7 +155,11 @@ int main() {
                 scanf("%d", &pos);
                 printf("Deleted value from position %d: %d\n", pos, deletePos(pos));
                 break;
-            case 7:
+			case 7:
+				reverse();
+				printf("List Reversed !! \n");
+				break;
+            case 8:
                 printf("Linked List: ");
                 display();
                 break;
