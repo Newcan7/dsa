@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define SIZE 5
+#define SIZE 10
 void bubble_sort(int a[])
 {
 	int i,j,temp,flag;
@@ -149,9 +149,11 @@ int main()
 		case 3: insertion_sort(Array);
 				break;
 		case 4: quick_sort(Array,0,SIZE-1);
+				printf("Quick Sorted Array is : \n");
 				display(Array);
 				break;
 		case 5: merge_sort(Array,0,SIZE-1);
+				printf("Merge Sorted Array is : \n");
 				display(Array);
 				break;
 	}
