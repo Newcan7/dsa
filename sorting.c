@@ -1,37 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #define SIZE 5
-int main()
-{
-	void bubble_sort(int []);
-    void selection_sort(int []);
-    void insertion_sort(int []);
-	void quick_sort(int[],int,int);
-	int i,j,ch;
-	int Array[SIZE];
-	printf("Enter unsorted elements : \n");
-	for(i=0;i<SIZE;i++)
-	{
-		scanf("%d", &Array[i]);
-	}
-	printf("1 for bubble \n");
-	printf("2 for selection \n");
-	printf("3 for insertion \n");
-	printf("4 for quick \n");
-	scanf("%d", &ch);
-	switch(ch)
-	{
-		case 1: bubble_sort(Array);
-		break; 
-		case 2: selection_sort(Array);
-		break;
-		case 3: insertion_sort(Array);
-		break;
-		case 4: quick_sort(Array,0,SIZE-1);
-		break;
-	}
-	return 0; 
-}
 void bubble_sort(int a[])
 {
 	int i,j,temp,flag;
@@ -96,14 +65,6 @@ void quick_sort(int a[],int l,int h)
 		quick_sort(a,l,p-1);
 		quick_sort(a,p-1,h);
 	}
-	{
-	printf("QUICK Sorted Array is : \n");
-	for(i=0;i<SIZE;i++)
-	{
-		printf("%d \n", a[i]);
-	}
-	exit(1);
-	}
 }
 int partition(int a[],int l,int h)
 {
@@ -127,34 +88,10 @@ int partition(int a[],int l,int h)
 	a[high]=pivot;
 	return high;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#include<stdio.h>
-#include<stdlib.h>
-#define SIZE 5
-
 void merge(int a[],int l,int mid,int u)
 {
-    int i=l,k=l,j=mid+1;
-    int t[u];
+    int i=l,k=l,j=mid+1,p;
+    int t[SIZE];
     while(i<=mid && j<=u)
     {
         if(a[i]<=a[j])
@@ -166,9 +103,9 @@ void merge(int a[],int l,int mid,int u)
         t[k++]=a[i++];
     while (j<=u)
         t[k++]=a[j++];
-    for(k=l;i<=u;k++)
+    for(k=l;k<=u;k++)
         a[k]=t[k];
-    
+         
 }
 void merge_sort(int a[], int l, int u)
 {
@@ -179,7 +116,6 @@ void merge_sort(int a[], int l, int u)
         merge(a,l,((l+u)/2),u);
     }
 }
-
 void display(int a[])
 {
     int i;
@@ -189,7 +125,6 @@ void display(int a[])
 		printf("%d \n", a[i]);
 	}
 }
-
 int main()
 {
 	int i,j,ch;
@@ -199,18 +134,28 @@ int main()
 	{
 		scanf("%d", &Array[i]);
 	}
-	printf("1 for merge sort \n");
-    printf("2. Display \n");
+	printf("1. for bubble sort\n");
+	printf("2. for selection sort\n");
+	printf("3. for insertion sort\n");
+	printf("4. for quick sort\n");
+	printf("5. for merge sort \n");
 	scanf("%d", &ch);
 	switch(ch)
 	{
-		case 1: merge_sort(Array,0,4);
-		break;
-        case 2: display(Array);
-        break;
+		case 1: bubble_sort(Array);
+				break; 
+		case 2: selection_sort(Array);
+				break;
+		case 3: insertion_sort(Array);
+				break;
+		case 4: quick_sort(Array,0,SIZE-1);
+				display(Array);
+				break;
+		case 5: merge_sort(Array,0,SIZE-1);
+				display(Array);
+				break;
 	}
 	return 0; 
 }
-
 
 
