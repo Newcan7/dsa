@@ -2,35 +2,38 @@
 #include <stdlib.h>
 #define MAX 5
 int rear = -1, front = -1;
-void insert(int a[], int x);
-int delete(int a[]);
-void display(int a[]);
+int queue[MAX];
+void insert(int x);
+int delete();
+void display();
 int main()
 {
-    int a[MAX], n, m, ch;
+    int n,ch;
     while (1)
     {
-        printf("\n1: Insert \n");
+        printf("1: Insert \n");
         printf("2: Delete \n");
-        printf("Enter choice : ");
+        printf("3. Display \n");
+        printf("Enter choice : \n");
         scanf("%d", &ch);
         switch (ch)
         {
         case 1:
             printf("Enter element : ");
             scanf("%d", &n);
-            insert(a, n);
+            insert(n);
             break;
-        case 2:
-            m = delete(a);
-            if (m != -1)
-                printf("Deleted element is : %d\n", m);
+        case 2: 
+            printf("Deleted element is : %d\n",delete());
+            break;
+        case 3:
+            display();
             break;
         }
     }
     return 0;
 }
-void insert(int a[], int x)
+void insert(int x)
 {
     if (front == (rear + 1) % MAX)
     {
@@ -40,10 +43,10 @@ void insert(int a[], int x)
     if (front == -1)
         front = 0;
     rear = (rear + 1) % MAX;
-    a[rear] = x;
+    queue[rear] = x;
     printf("%d inserted \n", x);
 }
-int delete(int a[])
+int delete()
 {
     int x;
     if (front == -1)
@@ -51,10 +54,19 @@ int delete(int a[])
         printf("Queue Empty\n");
         return -1;
     }
-    x = a[front];
+    x = queue[front];
     if (front == rear) 
         front = rear = -1;
     else
         front = (front + 1) % MAX;
     return x;
+}
+void display()
+{
+    int i;
+    for(i=front;i<=rear;i=(i+1)%MAX)
+    {
+        printf("%d<-- ", queue[i]);
+    }
+    printf("\n");
 }

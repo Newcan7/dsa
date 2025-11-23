@@ -1,31 +1,30 @@
 #include<stdio.h>
 #define SIZE 5
-int binary_search(int a[], int key, int high,int low);
+int arr[SIZE];
+int binary_search(int key,int low,int high);
 int main()
 {
-	int i,j,ans,n,size =5,high=4,low=0;
-	printf("element to find : \n");
+	int i,n,high=SIZE-1,low=0;
+	printf("Element to find : \n");
 	scanf("%d", &n);
-	int Array[SIZE];
 	printf("Enter elements : \n");
 	for(i=0;i<SIZE;i++)
 	{
-		scanf("%d", &Array[i]);
+		scanf("%d", &arr[i]);
 	}
-	if(binary_search(Array,n,high,low) ==1 )
-	printf("element found");
-	
+	if(binary_search(n,high,low)==1)
+		printf("Element found");
 	return 0;
 }
-int binary_search(int a[], int key, int high,int low)
+int binary_search(int key,int low,int high)
 {
 	int mid;
 		mid=(low+high)/2;
-		if(key==a[mid])
-		return 1;
-		if (key<a[mid])
-		binary_search( a, key,mid-1,low);
-		else
-		binary_search(a, key,high,mid+1);
+		if(key==arr[mid])
+			return 1;
+		if (key<arr[mid])
+			binary_search(key,low,mid-1);
+		else if(key>arr[mid])
+			binary_search(key,mid+1,high);
 		return 0;
 }
