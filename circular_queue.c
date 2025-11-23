@@ -66,7 +66,7 @@ void display()
     int i;
     for(i=front;i<=rear;i=(i+1)%MAX)
     {
-        printf("%d<-- ", queue[i]);
+        printf(" %d<-- ", queue[i]);
     }
     printf("\n");
 }
