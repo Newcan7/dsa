@@ -1,13 +1,14 @@
 #include<stdio.h>
 #include<stdlib.h>
 #define SIZE 5
+int queue[SIZE];
 int rear =-1;
-void insert(int a[],int x);
-int delete(int a[]);
-void Display(int a[]);
+void insert(int x);
+int delete();
+void Display();
 int main()
 {
-	int a[SIZE],n,m,ch;
+	int n,ch;
 	while(1)
 	{
 		printf("1: Insert \n");
@@ -19,28 +20,27 @@ int main()
 		{
 			case 1: printf("Enter element : \n");
 					scanf("%d",&n);
-					insert(a,n);
+					insert(n);
 					break;
-			case 2: m = delete(a);
-			        printf("deleted element is : %d \n",m);	
+			case 2: printf("deleted element is : %d \n",delete(queue));	
 					break;
-			case 3: Display(a);
+			case 3: Display();
 					break;
 			default : exit(1);			
 		}
 	}
 	return 0;		
 }
-void insert(int a[],int x)
+void insert(int x)
 {
 	if(rear==SIZE-1)
 	{
 		printf("Queue Full \n");
 		exit(1);
 	}
-	a[++rear]=x;
+	queue[++rear]=x;
 }
-int delete(int a[])
+int delete()
 {
 	int i,e;
 	if(rear==-1)
@@ -48,21 +48,21 @@ int delete(int a[])
 		printf("Queue Empty \n");
 		exit(1);
 	}
-	e=a[0];
+	e=queue[0];
 	for(i=0;i<rear;i++)
 	{
-		a[i]=a[i+1];
+		queue[i]=queue[i+1];
 	}
-	--rear;
+	rear--;
 	return e;
 	
 }
-void Display(int a[])
+void Display()
 {
 	int i;
 	for(i=0;i<=rear;i++)
 	{
-		printf("%d <-- ",a[i]);
+		printf("%d <-- ",queue[i]);
 	}
-	printf("/n",);
+	printf("/n");
 }
