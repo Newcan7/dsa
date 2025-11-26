@@ -27,4 +27,4 @@ int binary_search(int key,int low,int high)
 		else if(key>arr[mid])
 			binary_search(key,mid+1,high);
 		return 0;
-} // bithday update happy birthday !!!!
+}

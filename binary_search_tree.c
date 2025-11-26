@@ -6,9 +6,9 @@ typedef struct element
 	struct element *left, *right;
 }NODE;
 NODE *root=NULL;
-void create(int k)
+void insert(int k)
 {
-	NODE *p=(NODE*)malloc(sizeof(NODE)), *q=root, *r=NULL;
+	NODE *p=(NODE*)malloc(sizeof(NODE)), *q=root, *r;
 	p->key=k;
 	p->left=p->right=NULL;
 	if(!root)
@@ -49,7 +49,7 @@ int main() {
             case 1:
                 printf("Enter value to insert : ");
                 scanf("%d", &value);
-                create(value);
+                insert(value);
                 break;
             case 2:
                 inorder_display(root);
