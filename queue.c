@@ -48,14 +48,13 @@ int delete()
 		printf("Queue Empty \n");
 		exit(1);
 	}
-	e=queue[0];
+	x=queue[0];
 	for(i=0;i<rear;i++)
 	{
 		queue[i]=queue[i+1];
 	}
 	rear--;
 	return x;
-	
 }
 void Display()
 {
