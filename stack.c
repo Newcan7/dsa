@@ -16,16 +16,13 @@ void push(int a[],int x)
  
 int pop(int a[])
 {
-	int x;
 	if(top==-1)
 	{
 		printf("Stack empty \n");
 		exit(1);
 		
 	}
-	x=a[top];
-	top--;
-	return x;
+	return a[top--];
 }
 int peek(int a [])
 {

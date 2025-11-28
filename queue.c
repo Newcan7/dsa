@@ -42,7 +42,7 @@ void insert(int x)
 }
 int delete()
 {
-	int i,e;
+	int i,x;
 	if(rear==-1)
 	{
 		printf("Queue Empty \n");
@@ -54,7 +54,7 @@ int delete()
 		queue[i]=queue[i+1];
 	}
 	rear--;
-	return e;
+	return x;
 	
 }
 void Display()
