@@ -6,7 +6,6 @@ int key;
 struct list *next, *prev;
 } NODE;
 NODE* head =NULL;
-NODE* create(int k);
 NODE* create(int k)
 {
 	NODE* p =(NODE*)malloc(sizeof(NODE));
@@ -44,7 +43,7 @@ void insertPos(int k,int pos)
 {
 	NODE*p= create(k), *q=head;
 	int i;
-	for(i=0;i<pos-1;i++)
+	for(i=1;i<pos-1;i++)
 	{
 		q=q->next;
 	}

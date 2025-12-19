@@ -33,7 +33,7 @@ int count_nodes(NODE *r)
 {
 	if(r==NULL)
 	return 0;
-	return 1+ count_nodes(r->left)+count_nodes(r->right);
+	return 1+count_nodes(r->left)+count_nodes(r->right);
 }
 int count_leaf(NODE *r)
 {
@@ -56,16 +56,17 @@ int search(NODE *r,int key)
 	}
 	return 0;
 }
-void inorder_display(NODE *r)
+void inorder_display()
 {
-	if(r)
+	if(root)
 	{
-		inorder_display(r->left);
-		printf("%d  ",r->key);
-		inorder_display(r->right);
+		inorder_display(root->left);
+		printf("%d  ",root->key);
+		inorder_display(root->right);
 	}
 }
-int main() {
+int main() 
+{
     int choice, value;
     while (1) {
         printf("1. Insert \n");
@@ -75,7 +76,8 @@ int main() {
 		printf("5. Search an element\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
-        switch (choice) {
+        switch (choice) 
+		{
             case 1:
                 printf("Enter value to insert : ");
                 scanf("%d", &value);
