@@ -33,7 +33,7 @@ int count_nodes(NODE *r)
 {
 	if(r==NULL)
 	return 0;
-	return 1+ count_nodes(r->left)+count_nodes(r->right);
+	return 1+count_nodes(r->left)+count_nodes(r->right);
 }
 int count_leaf(NODE *r)
 {
