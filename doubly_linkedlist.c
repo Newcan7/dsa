@@ -17,7 +17,7 @@ NODE* create(int k)
 void insertLast(int k)
 {
 	NODE *p= create(k), *q=head;
-	if(!head)
+	if(!head)     // just testing //
 	{
 		head=p;
 		return;
